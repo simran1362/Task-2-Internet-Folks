@@ -16,6 +16,10 @@ a {
   font-family: "Poppins", sans-serif;
 }
 
+/* .chakra-form-control.css-14an0i5, .chakra-input__group.css-h8yphf{
+  z-index: 100;
+}  */
+
 /* width */
 ::-webkit-scrollbar {
   width: 10px;

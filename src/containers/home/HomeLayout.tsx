@@ -10,12 +10,13 @@ import {
   Box,
   Grid,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import InterviewSettingsForm from "./InterviewSettingsForm";
 import JobDetailsForm from "./JobDetailsForm";
 import RequisitionForm from "./RequisitionDetailsForm";
 import DisplayCard from "./PreviewCard";
 import { PageNumbers } from "../../interface/home";
+import { useData } from "./DataProvider";
 
 const CustomTab: React.FC<TabProps> = ({ children, ...props }) => {
   return (
@@ -27,7 +28,7 @@ const CustomTab: React.FC<TabProps> = ({ children, ...props }) => {
 
 const HomeLayout = () => {
   const [page, setPage] = useState<PageNumbers>(0);
-
+  const data = useData();
   const handlePage = (pageNumber: PageNumbers) => {
     setPage(pageNumber);
   };
@@ -56,7 +57,13 @@ const HomeLayout = () => {
                 <InterviewSettingsForm handleTab={handlePage} />
               </TabPanel>
             </TabPanels>
-            <DisplayCard />
+            {data && (
+              <DisplayCard
+                requisitionDetails={data.state.requisitionDetails}
+                interviewSettings={data.state.interviewSettings}
+                jobDetails={data.state.jobDetails}
+              />
+            )}
           </Grid>
         </Tabs>
       </Container>

@@ -61,6 +61,7 @@ const FormSelect: React.FC<IFormSelectProps> = ({
             height: "auto",
             maxHeight: "none",
             minHeight: "none",
+            // zIndex: "0",
           }),
           control: (base, { isFocused }) => ({
             ...base,
@@ -83,11 +84,13 @@ const FormSelect: React.FC<IFormSelectProps> = ({
           valueContainer: (base) => ({
             ...base,
             paddingLeft: "20px",
+            zIndex: "100",
           }),
           option: (base, { isFocused }) => ({
             ...base,
             fontSize: ".875rem",
             fontWeight: "500",
+            zIndex: "100",
           }),
         }}
         {...selectProps}
